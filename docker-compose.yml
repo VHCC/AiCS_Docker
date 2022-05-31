@@ -1,0 +1,32 @@
+#使用 3.8 版的設定檔，通常新版本會有新的功能，並支援新的設定參數
+version: "3.8"
+
+# 定義 service 的區塊，一個 service 設定可以用來啟動多個 container
+services:
+  # 定義一個叫 npm 的 service
+  inspect-server:
+    build:          #镜像构建
+      context: ..   #构建镜像时所在的资源路径
+      dockerfile: ./docker/tomcat9062/Dockerfile    #构建镜像时需要的dockerfile文件路径
+    image: inspect/server:2.0.3.16
+    ports:
+      - 8082:9000
+    environment:
+      - TZ=Asia/Shanghai
+      - JAVA_OPTS=-Xmx2048m -Xms1024m
+    entrypoint:
+      - "/usr/local/tomcat/bin/catalina.sh"
+      - "run"
+    volumes:
+      - "./docker/tomcat9062/webapps:/usr/local/tomcat/webapps"
+      - "./docker/tomcat9062/logs:/usr/local/tomcat/logs"
+#      - "./docker/tomcat9062/conf:/usr/local/tomcat/conf"
+    container_name: inspect-backend
+  portainer:
+    image: portainer/portainer
+    volumes:
+      - ./docker/portainer/docker.sock:/var/run/docker.sock
+      - ./docker/portainer/data:/data
+    ports:
+      - 9000:9000
+    container_name: portainer
