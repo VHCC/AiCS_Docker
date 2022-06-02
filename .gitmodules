@@ -5,3 +5,7 @@
 	path = StoreMonitor.WebCMS
 	url = https://project.ushop-plus.com/Git.Server/StoreMonitor.WebCMS.git
 	branch = Release_V2.0.3
+[submodule "StoreMonitor.WebUI"]
+	path = StoreMonitor.WebUI
+	url = https://project.ushop-plus.com/Git.Server/StoreMonitor.WebUI.git
+	branch = release_3.0.3
