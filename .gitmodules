@@ -1,0 +1,7 @@
+[submodule "test"]
+	path = test
+	url = https://project.ushop-plus.com/Git.Server/StoreMonitor.WebCMS.git
+[submodule "StoreMonitor.WebCMS"]
+	path = StoreMonitor.WebCMS
+	url = https://project.ushop-plus.com/Git.Server/StoreMonitor.WebCMS.git
+	branch = Release_V2.0.3
